@@ -78,6 +78,12 @@
         "generate": [
             "@php artisan typescript:transform",
             "@php artisan wayfinder:generate"
+        ],
+        "generate-and-cleanup": [
+            "@php artisan typescript:transform",
+            "@php artisan wayfinder:generate",
+            "@php vendor/bin/pint --parallel",
+            "@php vendor/bin/rector process"
         ]
     },
     "extra": {
