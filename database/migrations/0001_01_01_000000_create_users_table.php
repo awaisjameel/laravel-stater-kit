@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Data\UserData;
 use App\Enums\UserRole;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,29 +17,29 @@ return new class extends Migration
             return;
         }
 
-        $users = [
-            [
-                'name' => 'Admin',
-                'email' => 'admin@app.com',
-                'role' => UserRole::Admin->value,
-                'password' => bcrypt('Admin123!@#'),
-            ],
-            [
-                'name' => 'User',
-                'email' => 'user@app.com',
-                'role' => UserRole::User->value,
-                'password' => bcrypt('User123!@#'),
-            ],
+        $usersDataList = [
+            new UserData(
+                id: null,
+                name: 'Admin',
+                email: 'admin@app.com',
+                role: UserRole::Admin,
+                email_verified_at: new DateTimeImmutable('now'),
+                password: 'Admin123!@#',
+            ),
+            new UserData(
+                id: null,
+                name: 'User',
+                email: 'user@app.com',
+                role: UserRole::User,
+                email_verified_at: null,
+                password: 'User123!@#',
+            ),
         ];
 
-        foreach ($users as $user) {
-            App\Models\User::updateOrCreate(
-                ['email' => $user['email']],
-                [
-                    'name' => $user['name'],
-                    'role' => $user['role'],
-                    'password' => $user['password'],
-                ]
+        foreach ($usersDataList as $userData) {
+            User::updateOrCreate(
+                ['email' => $userData->email],
+                $userData->toArray()
             );
         }
     }
