@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
 import type { BreadcrumbItem, NavItem } from '@/types';
-import { LayoutGrid, Menu, Search } from 'lucide-vue-next';
+import { UserRole } from '@/types/app-data';
+import { LayoutGrid, Menu, Search, Users } from 'lucide-vue-next';
 
 interface Props {
     breadcrumbs?: BreadcrumbItem[];
@@ -29,9 +30,15 @@ const mainNavItems: NavItem[] = [
     },
 ];
 
-const rightNavItems: NavItem[] = [
+if (page.props.auth.user.role === UserRole.Admin) {
+    mainNavItems.push({
+        title: 'Users',
+        href: '/users',
+        icon: Users,
+    });
+}
 
-];
+const rightNavItems: NavItem[] = [];
 </script>
 
 <template>
@@ -53,17 +60,26 @@ const rightNavItems: NavItem[] = [
                             </UiSheetHeader>
                             <div class="flex h-full flex-1 flex-col justify-between space-y-4 py-6">
                                 <nav class="-mx-3 space-y-1">
-                                    <Link v-for="item in mainNavItems" :key="item.title" :href="item.href"
+                                    <Link
+                                        v-for="item in mainNavItems"
+                                        :key="item.title"
+                                        :href="item.href"
                                         class="flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent"
-                                        :class="activeItemStyles(item.href)">
-                                    <component v-if="item.icon" :is="item.icon" class="h-5 w-5" />
-                                    {{ item.title }}
+                                        :class="activeItemStyles(item.href)"
+                                    >
+                                        <component v-if="item.icon" :is="item.icon" class="h-5 w-5" />
+                                        {{ item.title }}
                                     </Link>
                                 </nav>
                                 <div class="flex flex-col space-y-4">
-                                    <a v-for="item in rightNavItems" :key="item.title" :href="item.href" target="_blank"
+                                    <a
+                                        v-for="item in rightNavItems"
+                                        :key="item.title"
+                                        :href="item.href"
+                                        target="_blank"
                                         rel="noopener noreferrer"
-                                        class="flex items-center space-x-2 text-sm font-medium">
+                                        class="flex items-center space-x-2 text-sm font-medium"
+                                    >
                                         <component v-if="item.icon" :is="item.icon" class="h-5 w-5" />
                                         <span>{{ item.title }}</span>
                                     </a>
@@ -74,24 +90,25 @@ const rightNavItems: NavItem[] = [
                 </div>
 
                 <Link :href="route('dashboard')" class="flex items-center gap-x-2">
-                <AppLogo />
+                    <AppLogo />
                 </Link>
 
                 <!-- Desktop Menu -->
                 <div class="hidden h-full lg:flex lg:flex-1">
                     <UiNavigationMenu class="ml-10 flex h-full items-stretch">
                         <UiNavigationMenuList class="flex h-full items-stretch space-x-2">
-                            <UiNavigationMenuItem v-for="(item, index) in mainNavItems" :key="index"
-                                class="relative flex h-full items-center">
+                            <UiNavigationMenuItem v-for="(item, index) in mainNavItems" :key="index" class="relative flex h-full items-center">
                                 <Link
                                     :class="[navigationMenuTriggerStyle(), activeItemStyles(item.href), 'h-9 cursor-pointer px-3']"
-                                    :href="item.href">
-                                <component v-if="item.icon" :is="item.icon" class="mr-2 h-4 w-4" />
-                                {{ item.title }}
+                                    :href="item.href"
+                                >
+                                    <component v-if="item.icon" :is="item.icon" class="mr-2 h-4 w-4" />
+                                    {{ item.title }}
                                 </Link>
-                                <div v-if="isCurrentRoute(item.href)"
-                                    class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white">
-                                </div>
+                                <div
+                                    v-if="isCurrentRoute(item.href)"
+                                    class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"
+                                ></div>
                             </UiNavigationMenuItem>
                         </UiNavigationMenuList>
                     </UiNavigationMenu>
@@ -108,12 +125,10 @@ const rightNavItems: NavItem[] = [
                                 <UiTooltipProvider :delay-duration="0">
                                     <UiTooltip>
                                         <UiTooltipTrigger>
-                                            <UiButton variant="ghost" size="icon" as-child
-                                                class="group h-9 w-9 cursor-pointer">
+                                            <UiButton variant="ghost" size="icon" as-child class="group h-9 w-9 cursor-pointer">
                                                 <a :href="item.href" target="_blank" rel="noopener noreferrer">
                                                     <span class="sr-only">{{ item.title }}</span>
-                                                    <component :is="item.icon"
-                                                        class="size-5 opacity-80 group-hover:opacity-100" />
+                                                    <component :is="item.icon" class="size-5 opacity-80 group-hover:opacity-100" />
                                                 </a>
                                             </UiButton>
                                         </UiTooltipTrigger>
@@ -128,13 +143,14 @@ const rightNavItems: NavItem[] = [
 
                     <UiDropdownMenu>
                         <UiDropdownMenuTrigger :as-child="true">
-                            <UiButton variant="ghost" size="icon"
-                                class="relative size-10 w-auto rounded-full p-1 focus-within:ring-2 focus-within:ring-primary">
+                            <UiButton
+                                variant="ghost"
+                                size="icon"
+                                class="relative size-10 w-auto rounded-full p-1 focus-within:ring-2 focus-within:ring-primary"
+                            >
                                 <UiAvatar class="size-8 overflow-hidden rounded-full">
-                                    <UiAvatarImage v-if="auth.user.avatar" :src="auth.user.avatar"
-                                        :alt="auth.user.name" />
-                                    <UiAvatarFallback
-                                        class="rounded-lg bg-neutral-200 font-semibold text-black dark:bg-neutral-700 dark:text-white">
+                                    <UiAvatarImage v-if="auth.user.avatar" :src="auth.user.avatar" :alt="auth.user.name" />
+                                    <UiAvatarFallback class="rounded-lg bg-neutral-200 font-semibold text-black dark:bg-neutral-700 dark:text-white">
                                         {{ getInitials(auth.user?.name) }}
                                     </UiAvatarFallback>
                                 </UiAvatar>

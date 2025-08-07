@@ -66,12 +66,31 @@ declare global {
   const NavigationMenuList: typeof import('../components/ui/navigation-menu/index')['NavigationMenuList']
   const NavigationMenuTrigger: typeof import('../components/ui/navigation-menu/index')['NavigationMenuTrigger']
   const NavigationMenuViewport: typeof import('../components/ui/navigation-menu/index')['NavigationMenuViewport']
+  const Pagination: typeof import('../components/ui/pagination/index')['Pagination']
+  const PaginationContent: typeof import('../components/ui/pagination/index')['PaginationContent']
+  const PaginationEllipsis: typeof import('../components/ui/pagination/index')['PaginationEllipsis']
+  const PaginationFirst: typeof import('../components/ui/pagination/index')['PaginationFirst']
+  const PaginationItem: typeof import('../components/ui/pagination/index')['PaginationItem']
+  const PaginationLast: typeof import('../components/ui/pagination/index')['PaginationLast']
+  const PaginationNext: typeof import('../components/ui/pagination/index')['PaginationNext']
+  const PaginationPrevious: typeof import('../components/ui/pagination/index')['PaginationPrevious']
   const SIDEBAR_COOKIE_MAX_AGE: typeof import('../components/ui/sidebar/utils')['SIDEBAR_COOKIE_MAX_AGE']
   const SIDEBAR_COOKIE_NAME: typeof import('../components/ui/sidebar/utils')['SIDEBAR_COOKIE_NAME']
   const SIDEBAR_KEYBOARD_SHORTCUT: typeof import('../components/ui/sidebar/utils')['SIDEBAR_KEYBOARD_SHORTCUT']
   const SIDEBAR_WIDTH: typeof import('../components/ui/sidebar/utils')['SIDEBAR_WIDTH']
   const SIDEBAR_WIDTH_ICON: typeof import('../components/ui/sidebar/utils')['SIDEBAR_WIDTH_ICON']
   const SIDEBAR_WIDTH_MOBILE: typeof import('../components/ui/sidebar/utils')['SIDEBAR_WIDTH_MOBILE']
+  const Select: typeof import('../components/ui/select/index')['Select']
+  const SelectContent: typeof import('../components/ui/select/index')['SelectContent']
+  const SelectGroup: typeof import('../components/ui/select/index')['SelectGroup']
+  const SelectItem: typeof import('../components/ui/select/index')['SelectItem']
+  const SelectItemText: typeof import('../components/ui/select/index')['SelectItemText']
+  const SelectLabel: typeof import('../components/ui/select/index')['SelectLabel']
+  const SelectScrollDownButton: typeof import('../components/ui/select/index')['SelectScrollDownButton']
+  const SelectScrollUpButton: typeof import('../components/ui/select/index')['SelectScrollUpButton']
+  const SelectSeparator: typeof import('../components/ui/select/index')['SelectSeparator']
+  const SelectTrigger: typeof import('../components/ui/select/index')['SelectTrigger']
+  const SelectValue: typeof import('../components/ui/select/index')['SelectValue']
   const Separator: typeof import('../components/ui/separator/index')['Separator']
   const Sheet: typeof import('../components/ui/sheet/index')['Sheet']
   const SheetClose: typeof import('../components/ui/sheet/index')['SheetClose']
@@ -105,6 +124,15 @@ declare global {
   const SidebarSeparator: typeof import('../components/ui/sidebar/index')['SidebarSeparator']
   const SidebarTrigger: typeof import('../components/ui/sidebar/index')['SidebarTrigger']
   const Skeleton: typeof import('../components/ui/skeleton/index')['Skeleton']
+  const Table: typeof import('../components/ui/table/index')['Table']
+  const TableBody: typeof import('../components/ui/table/index')['TableBody']
+  const TableCaption: typeof import('../components/ui/table/index')['TableCaption']
+  const TableCell: typeof import('../components/ui/table/index')['TableCell']
+  const TableEmpty: typeof import('../components/ui/table/index')['TableEmpty']
+  const TableFooter: typeof import('../components/ui/table/index')['TableFooter']
+  const TableHead: typeof import('../components/ui/table/index')['TableHead']
+  const TableHeader: typeof import('../components/ui/table/index')['TableHeader']
+  const TableRow: typeof import('../components/ui/table/index')['TableRow']
   const Tooltip: typeof import('../components/ui/tooltip/index')['Tooltip']
   const TooltipContent: typeof import('../components/ui/tooltip/index')['TooltipContent']
   const TooltipProvider: typeof import('../components/ui/tooltip/index')['TooltipProvider']
@@ -183,6 +211,7 @@ declare global {
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
   const updateTheme: typeof import('../composables/useAppearance')['updateTheme']
+  const useApi: typeof import('../composables/useApi')['useApi']
   const useAppearance: typeof import('../composables/useAppearance')['useAppearance']
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
@@ -200,6 +229,7 @@ declare global {
   const useSidebar: typeof import('../components/ui/sidebar/utils')['useSidebar']
   const useSlots: typeof import('vue')['useSlots']
   const useTemplateRef: typeof import('vue')['useTemplateRef']
+  const valueUpdater: typeof import('../components/ui/table/utils')['valueUpdater']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
   const watchPostEffect: typeof import('vue')['watchPostEffect']
@@ -285,12 +315,31 @@ declare module 'vue' {
     readonly NavigationMenuList: UnwrapRef<typeof import('../components/ui/navigation-menu/index')['NavigationMenuList']>
     readonly NavigationMenuTrigger: UnwrapRef<typeof import('../components/ui/navigation-menu/index')['NavigationMenuTrigger']>
     readonly NavigationMenuViewport: UnwrapRef<typeof import('../components/ui/navigation-menu/index')['NavigationMenuViewport']>
+    readonly Pagination: UnwrapRef<typeof import('../components/ui/pagination/index')['Pagination']>
+    readonly PaginationContent: UnwrapRef<typeof import('../components/ui/pagination/index')['PaginationContent']>
+    readonly PaginationEllipsis: UnwrapRef<typeof import('../components/ui/pagination/index')['PaginationEllipsis']>
+    readonly PaginationFirst: UnwrapRef<typeof import('../components/ui/pagination/index')['PaginationFirst']>
+    readonly PaginationItem: UnwrapRef<typeof import('../components/ui/pagination/index')['PaginationItem']>
+    readonly PaginationLast: UnwrapRef<typeof import('../components/ui/pagination/index')['PaginationLast']>
+    readonly PaginationNext: UnwrapRef<typeof import('../components/ui/pagination/index')['PaginationNext']>
+    readonly PaginationPrevious: UnwrapRef<typeof import('../components/ui/pagination/index')['PaginationPrevious']>
     readonly SIDEBAR_COOKIE_MAX_AGE: UnwrapRef<typeof import('../components/ui/sidebar/utils')['SIDEBAR_COOKIE_MAX_AGE']>
     readonly SIDEBAR_COOKIE_NAME: UnwrapRef<typeof import('../components/ui/sidebar/utils')['SIDEBAR_COOKIE_NAME']>
     readonly SIDEBAR_KEYBOARD_SHORTCUT: UnwrapRef<typeof import('../components/ui/sidebar/utils')['SIDEBAR_KEYBOARD_SHORTCUT']>
     readonly SIDEBAR_WIDTH: UnwrapRef<typeof import('../components/ui/sidebar/utils')['SIDEBAR_WIDTH']>
     readonly SIDEBAR_WIDTH_ICON: UnwrapRef<typeof import('../components/ui/sidebar/utils')['SIDEBAR_WIDTH_ICON']>
     readonly SIDEBAR_WIDTH_MOBILE: UnwrapRef<typeof import('../components/ui/sidebar/utils')['SIDEBAR_WIDTH_MOBILE']>
+    readonly Select: UnwrapRef<typeof import('../components/ui/select/index')['Select']>
+    readonly SelectContent: UnwrapRef<typeof import('../components/ui/select/index')['SelectContent']>
+    readonly SelectGroup: UnwrapRef<typeof import('../components/ui/select/index')['SelectGroup']>
+    readonly SelectItem: UnwrapRef<typeof import('../components/ui/select/index')['SelectItem']>
+    readonly SelectItemText: UnwrapRef<typeof import('../components/ui/select/index')['SelectItemText']>
+    readonly SelectLabel: UnwrapRef<typeof import('../components/ui/select/index')['SelectLabel']>
+    readonly SelectScrollDownButton: UnwrapRef<typeof import('../components/ui/select/index')['SelectScrollDownButton']>
+    readonly SelectScrollUpButton: UnwrapRef<typeof import('../components/ui/select/index')['SelectScrollUpButton']>
+    readonly SelectSeparator: UnwrapRef<typeof import('../components/ui/select/index')['SelectSeparator']>
+    readonly SelectTrigger: UnwrapRef<typeof import('../components/ui/select/index')['SelectTrigger']>
+    readonly SelectValue: UnwrapRef<typeof import('../components/ui/select/index')['SelectValue']>
     readonly Separator: UnwrapRef<typeof import('../components/ui/separator/index')['Separator']>
     readonly Sheet: UnwrapRef<typeof import('../components/ui/sheet/index')['Sheet']>
     readonly SheetClose: UnwrapRef<typeof import('../components/ui/sheet/index')['SheetClose']>
@@ -324,6 +373,15 @@ declare module 'vue' {
     readonly SidebarSeparator: UnwrapRef<typeof import('../components/ui/sidebar/index')['SidebarSeparator']>
     readonly SidebarTrigger: UnwrapRef<typeof import('../components/ui/sidebar/index')['SidebarTrigger']>
     readonly Skeleton: UnwrapRef<typeof import('../components/ui/skeleton/index')['Skeleton']>
+    readonly Table: UnwrapRef<typeof import('../components/ui/table/index')['Table']>
+    readonly TableBody: UnwrapRef<typeof import('../components/ui/table/index')['TableBody']>
+    readonly TableCaption: UnwrapRef<typeof import('../components/ui/table/index')['TableCaption']>
+    readonly TableCell: UnwrapRef<typeof import('../components/ui/table/index')['TableCell']>
+    readonly TableEmpty: UnwrapRef<typeof import('../components/ui/table/index')['TableEmpty']>
+    readonly TableFooter: UnwrapRef<typeof import('../components/ui/table/index')['TableFooter']>
+    readonly TableHead: UnwrapRef<typeof import('../components/ui/table/index')['TableHead']>
+    readonly TableHeader: UnwrapRef<typeof import('../components/ui/table/index')['TableHeader']>
+    readonly TableRow: UnwrapRef<typeof import('../components/ui/table/index')['TableRow']>
     readonly Tooltip: UnwrapRef<typeof import('../components/ui/tooltip/index')['Tooltip']>
     readonly TooltipContent: UnwrapRef<typeof import('../components/ui/tooltip/index')['TooltipContent']>
     readonly TooltipProvider: UnwrapRef<typeof import('../components/ui/tooltip/index')['TooltipProvider']>
@@ -406,6 +464,7 @@ declare module 'vue' {
     readonly useSidebar: UnwrapRef<typeof import('../components/ui/sidebar/utils')['useSidebar']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
+    readonly valueUpdater: UnwrapRef<typeof import('../components/ui/table/utils')['valueUpdater']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>

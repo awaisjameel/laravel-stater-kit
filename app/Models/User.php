@@ -22,7 +22,7 @@ final class User extends Authenticatable
 
     public function toData(): UserData
     {
-        return UserData::from($this);
+        return UserData::fromModel($this);
     }
 
     protected function casts(): array

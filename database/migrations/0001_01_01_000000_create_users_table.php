@@ -19,7 +19,6 @@ return new class extends Migration
 
         $usersDataList = [
             new UserData(
-                id: null,
                 name: 'Admin',
                 email: 'admin@app.com',
                 role: UserRole::Admin,
@@ -27,7 +26,6 @@ return new class extends Migration
                 password: 'Admin123!@#',
             ),
             new UserData(
-                id: null,
                 name: 'User',
                 email: 'user@app.com',
                 role: UserRole::User,

@@ -1,7 +1,7 @@
 export type UserData = {
-    created_at?: string;
-    updated_at?: string;
-    id?: number;
+    id: number;
+    created_at: string;
+    updated_at: string;
     name: string;
     email: string;
     role: UserRole;

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { type NavItem } from '@/types';
-import { LayoutGrid } from 'lucide-vue-next';
+import { UserRole } from '@/types/app-data';
+import { LayoutGrid, Users } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 
 const mainNavItems: NavItem[] = [
@@ -10,6 +11,16 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
 ];
+
+const page = usePage();
+
+if (page.props.auth.user.role === UserRole.Admin) {
+    mainNavItems.push({
+        title: 'Users',
+        href: '/users',
+        icon: Users,
+    });
+}
 
 const footerNavItems: NavItem[] = [];
 </script>
@@ -21,7 +32,7 @@ const footerNavItems: NavItem[] = [];
                 <UiSidebarMenuItem>
                     <UiSidebarMenuButton size="lg" as-child>
                         <Link :href="route('dashboard')">
-                        <AppLogo />
+                            <AppLogo />
                         </Link>
                     </UiSidebarMenuButton>
                 </UiSidebarMenuItem>

@@ -28,4 +28,18 @@ export type AppPageProps<T extends Record<string, unknown> = Record<string, unkn
 
 export interface User extends UserData {}
 
+export interface Paginated<T> {
+    data: T[];
+    per_page: Number;
+    current_page: Number;
+    from: number;
+    to: Number;
+    last_page: Number;
+    total: Number;
+}
+
+export interface UsersPageProps {
+    users: Paginated<UserData>;
+}
+
 export type BreadcrumbItemType = BreadcrumbItem;

@@ -12,7 +12,6 @@ use DateTimeImmutable;
 use Illuminate\Validation\Rules\Enum;
 use Spatie\LaravelData\Attributes\Validation\Rule;
 use Spatie\LaravelData\Attributes\WithCast;
-use Spatie\LaravelData\Attributes\WithoutValidation;
 use Spatie\LaravelData\Casts\EnumCast;
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
@@ -20,14 +19,13 @@ use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 #[TypeScript]
 final class UserData extends Data
 {
-    public ?CarbonImmutable $created_at = null;
+    public int $id;
 
-    public ?CarbonImmutable $updated_at = null;
+    public CarbonImmutable $created_at;
+
+    public CarbonImmutable $updated_at;
 
     public function __construct(
-        #[WithoutValidation]
-        public ?int $id,
-
         #[Rule(['required', 'string'])]
         public string $name,
 
@@ -49,7 +47,6 @@ final class UserData extends Data
     public static function fromModel(User $user): self
     {
         $userData = new self(
-            id: $user->id,
             name: $user->name,
             email: $user->email,
             role: $user->role,
@@ -57,8 +54,9 @@ final class UserData extends Data
             password: null, // $user->password is hashed
         );
 
-        $user->updated_at = CarbonImmutable::parse($user->updated_at);
-        $user->created_at = CarbonImmutable::parse($user->created_at);
+        $userData->id = $user->id;
+        $userData->updated_at = CarbonImmutable::parse($user->updated_at);
+        $userData->created_at = CarbonImmutable::parse($user->created_at);
 
         return $userData;
     }
