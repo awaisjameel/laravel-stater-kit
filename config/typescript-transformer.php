@@ -55,7 +55,7 @@ return [
      * The package will write the generated TypeScript to this file.
      */
 
-    'output_file' => resource_path('types/generated.d.ts'),
+    'output_file' => resource_path('js/types/app-data.ts'),
 
     /*
      * When the package is writing types to the output file, a writer is used to
@@ -63,7 +63,7 @@ return [
      * But you can also use the `ModuleWriter` or implement your own.
      */
 
-    'writer' => Spatie\TypeScriptTransformer\Writers\TypeDefinitionWriter::class,
+    'writer' => Spatie\TypeScriptTransformer\Writers\ModuleWriter::class,
 
     /*
      * The generated TypeScript file can be formatted. We ship a Prettier formatter
@@ -78,7 +78,7 @@ return [
      * the package will transform them to types.
      */
 
-    'transform_to_native_enums' => false,
+    'transform_to_native_enums' => true,
 
     /*
      * By default, this package will convert PHP nullable properties to TypeScript

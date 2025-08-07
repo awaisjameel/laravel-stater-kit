@@ -1,8 +1,9 @@
 import type { LucideIcon } from 'lucide-vue-next';
 import type { Config } from 'ziggy-js';
+import { UserData } from './app-data';
 
 export interface Auth {
-    user: User;
+    user: UserData;
 }
 
 export interface BreadcrumbItem {
@@ -25,14 +26,6 @@ export type AppPageProps<T extends Record<string, unknown> = Record<string, unkn
     sidebarOpen: boolean;
 };
 
-export interface User {
-    id: number;
-    name: string;
-    email: string;
-    avatar?: string;
-    email_verified_at: string | null;
-    created_at: string;
-    updated_at: string;
-}
+export interface User extends UserData {}
 
 export type BreadcrumbItemType = BreadcrumbItem;
