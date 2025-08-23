@@ -39,16 +39,21 @@ const closeModal = () => {
                         <UiDialogHeader class="space-y-3">
                             <UiDialogTitle>Are you sure you want to delete your account?</UiDialogTitle>
                             <UiDialogDescription>
-                                Once your account is deleted, all of its resources and data will also be permanently
-                                deleted. Please enter your
+                                Once your account is deleted, all of its resources and data will also be permanently deleted. Please enter your
                                 password to confirm you would like to permanently delete your account.
                             </UiDialogDescription>
                         </UiDialogHeader>
 
                         <div class="grid gap-2">
                             <UiLabel for="password" class="sr-only">Password</UiLabel>
-                            <UiInput id="password" type="password" name="password" ref="passwordInput"
-                                v-model="form.password" placeholder="Password" />
+                            <UiInput
+                                id="password"
+                                type="password"
+                                name="password"
+                                ref="passwordInput"
+                                v-model="form.password"
+                                placeholder="Password"
+                            />
                             <InputError :message="form.errors.password" />
                         </div>
 
@@ -57,8 +62,7 @@ const closeModal = () => {
                                 <UiButton variant="secondary" @click="closeModal"> Cancel </UiButton>
                             </UiDialogClose>
 
-                            <UiButton type="submit" variant="destructive" :disabled="form.processing"> Delete account
-                            </UiButton>
+                            <UiButton type="submit" variant="destructive" :disabled="form.processing"> Delete account </UiButton>
                         </UiDialogFooter>
                     </form>
                 </UiDialogContent>

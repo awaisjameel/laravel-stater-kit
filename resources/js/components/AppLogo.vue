@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <Icon-icon-park-outline:system class="size-6 fill-current" />

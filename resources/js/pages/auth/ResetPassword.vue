@@ -24,30 +24,42 @@ const submit = () => {
 
 <template>
     <AuthLayout title="Reset password" description="Please enter your new password below">
-
         <Head title="Reset password" />
 
         <form @submit.prevent="submit">
             <div class="grid gap-6">
                 <div class="grid gap-2">
                     <UiLabel for="email">Email</UiLabel>
-                    <UiInput id="email" type="email" name="email" autocomplete="email" v-model="form.email"
-                        class="mt-1 block w-full" readonly />
+                    <UiInput id="email" type="email" name="email" autocomplete="email" v-model="form.email" class="mt-1 block w-full" readonly />
                     <InputError :message="form.errors.email" class="mt-2" />
                 </div>
 
                 <div class="grid gap-2">
                     <UiLabel for="password">Password</UiLabel>
-                    <UiInput id="password" type="password" name="password" autocomplete="new-password"
-                        v-model="form.password" class="mt-1 block w-full" autofocus placeholder="Password" />
+                    <UiInput
+                        id="password"
+                        type="password"
+                        name="password"
+                        autocomplete="new-password"
+                        v-model="form.password"
+                        class="mt-1 block w-full"
+                        autofocus
+                        placeholder="Password"
+                    />
                     <InputError :message="form.errors.password" />
                 </div>
 
                 <div class="grid gap-2">
                     <UiLabel for="password_confirmation"> Confirm Password </UiLabel>
-                    <UiInput id="password_confirmation" type="password" name="password_confirmation"
-                        autocomplete="new-password" v-model="form.password_confirmation" class="mt-1 block w-full"
-                        placeholder="Confirm password" />
+                    <UiInput
+                        id="password_confirmation"
+                        type="password"
+                        name="password_confirmation"
+                        autocomplete="new-password"
+                        v-model="form.password_confirmation"
+                        class="mt-1 block w-full"
+                        placeholder="Confirm password"
+                    />
                     <InputError :message="form.errors.password_confirmation" />
                 </div>
 

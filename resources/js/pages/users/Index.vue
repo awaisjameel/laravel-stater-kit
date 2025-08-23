@@ -84,31 +84,15 @@ const onUserDeleted = async () => {
                                 <table class="w-full">
                                     <thead class="border-b">
                                         <tr class="hover:bg-transparent">
-                                            <th
-                                                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                                                Name
-                                            </th>
-                                            <th
-                                                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                                                Role
-                                            </th>
-                                            <th
-                                                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                                                Email
-                                            </th>
-                                            <th
-                                                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                                                Created At
-                                            </th>
-                                            <th
-                                                class="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
-                                                Actions
-                                            </th>
+                                            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Name</th>
+                                            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Role</th>
+                                            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Email</th>
+                                            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Created At</th>
+                                            <th class="h-12 px-4 text-right align-middle font-medium text-muted-foreground">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="item in props.users.data" :key="item.id"
-                                            class="border-b transition-colors hover:bg-muted/50">
+                                        <tr v-for="item in props.users.data" :key="item.id" class="border-b transition-colors hover:bg-muted/50">
                                             <td class="flex flex-row items-center justify-center gap-2 p-4">
                                                 <UserInfo :user="item" />
                                             </td>
@@ -124,11 +108,12 @@ const onUserDeleted = async () => {
                                                         </UiButton>
                                                     </UiDropdownMenuTrigger>
                                                     <UiDropdownMenuContent align="end">
-                                                        <UiDropdownMenuItem @click="onEditUser(item)"> Edit
-                                                        </UiDropdownMenuItem>
-                                                        <UiDropdownMenuItem v-if="page.props.auth.user.id !== item.id"
+                                                        <UiDropdownMenuItem @click="onEditUser(item)"> Edit </UiDropdownMenuItem>
+                                                        <UiDropdownMenuItem
+                                                            v-if="page.props.auth.user.id !== item.id"
                                                             @click="onDeleteUser(item)"
-                                                            class="text-red-600 focus:text-red-600">
+                                                            class="text-red-600 focus:text-red-600"
+                                                        >
                                                             Delete
                                                         </UiDropdownMenuItem>
                                                     </UiDropdownMenuContent>
@@ -143,8 +128,14 @@ const onUserDeleted = async () => {
                 </UiCard>
 
                 <div v-if="totalPages > 1" class="mt-4 flex flex-row items-center justify-between">
-                    <UiPagination :total="totalItems" :items-per-page="itemsPerPage" :page="currentPage"
-                        :sibling-count="2" show-edges @update:page="onPageChange">
+                    <UiPagination
+                        :total="totalItems"
+                        :items-per-page="itemsPerPage"
+                        :page="currentPage"
+                        :sibling-count="2"
+                        show-edges
+                        @update:page="onPageChange"
+                    >
                         <UiPaginationContent>
                             <!-- <UiPaginationFirst @click="onPageChange(1)" /> -->
                             <UiPaginationPrevious @click="onPageChange(currentPage - 1)" :disabled="currentPage === 1">
@@ -152,16 +143,18 @@ const onUserDeleted = async () => {
                             </UiPaginationPrevious>
                             <template v-for="(item, index) in pageNumbers" :key="index">
                                 <UiPaginationItem :value="item" as-child>
-                                    <UiButton class="h-10 w-10 p-0"
+                                    <UiButton
+                                        class="h-10 w-10 p-0"
                                         :variant="item === currentPage ? 'outline' : 'ghost'"
                                         :aria-current="item === currentPage ? 'page' : undefined"
-                                        :disabled="item === currentPage" @click="onPageChange(item)">
+                                        :disabled="item === currentPage"
+                                        @click="onPageChange(item)"
+                                    >
                                         {{ item }}
                                     </UiButton>
                                 </UiPaginationItem>
                             </template>
-                            <UiPaginationNext @click="onPageChange(currentPage + 1)"
-                                :disabled="currentPage === totalPages">
+                            <UiPaginationNext @click="onPageChange(currentPage + 1)" :disabled="currentPage === totalPages">
                                 <Icon-mdi-chevron-right class="h-4 w-4" />
                             </UiPaginationNext>
                             <!-- <UiPaginationLast @click="onPageChange(totalPages)" /> -->
@@ -170,14 +163,28 @@ const onUserDeleted = async () => {
                 </div>
             </div>
 
-            <UsersCreateUserDialog v-if="isCreateDialogOpen" :open="isCreateDialogOpen"
-                @update:open="isCreateDialogOpen = $event" @created="onCreateUser" />
+            <UsersCreateUserDialog
+                v-if="isCreateDialogOpen"
+                :open="isCreateDialogOpen"
+                @update:open="isCreateDialogOpen = $event"
+                @created="onCreateUser"
+            />
 
-            <UsersEditUserDialog v-if="isEditDialogOpen" :open="isEditDialogOpen" :user="selectedUser"
-                @update:open="isEditDialogOpen = $event" @updated="onUpdateUser" />
+            <UsersEditUserDialog
+                v-if="isEditDialogOpen"
+                :open="isEditDialogOpen"
+                :user="selectedUser"
+                @update:open="isEditDialogOpen = $event"
+                @updated="onUpdateUser"
+            />
 
-            <UsersDeleteUserDialog v-if="isDeleteDialogOpen" :open="isDeleteDialogOpen" :user="selectedUser"
-                @update:open="isDeleteDialogOpen = $event" @deleted="onUserDeleted" />
+            <UsersDeleteUserDialog
+                v-if="isDeleteDialogOpen"
+                :open="isDeleteDialogOpen"
+                :user="selectedUser"
+                @update:open="isDeleteDialogOpen = $event"
+                @deleted="onUserDeleted"
+            />
         </div>
     </AppLayout>
 </template>

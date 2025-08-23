@@ -16,7 +16,6 @@ const submit = () => {
 
 <template>
     <AuthLayout title="Forgot password" description="Enter your email to receive a password reset link">
-
         <Head title="Forgot password" />
 
         <div v-if="status" class="mb-4 text-center text-sm font-medium text-green-600">
@@ -27,8 +26,7 @@ const submit = () => {
             <form @submit.prevent="submit">
                 <div class="grid gap-2">
                     <UiLabel for="email">Email address</UiLabel>
-                    <UiInput id="email" type="email" name="email" autocomplete="off" v-model="form.email" autofocus
-                        placeholder="email@example.com" />
+                    <UiInput id="email" type="email" name="email" autocomplete="off" v-model="form.email" autofocus placeholder="email@example.com" />
                     <InputError :message="form.errors.email" />
                 </div>
 

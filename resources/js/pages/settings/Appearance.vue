@@ -11,7 +11,6 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
 <template>
     <AppFunnelLayout :breadcrumbs="breadcrumbItems">
-
         <Head title="Appearance settings" />
 
         <SettingsLayout>

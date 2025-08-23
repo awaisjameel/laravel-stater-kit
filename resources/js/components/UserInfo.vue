@@ -11,7 +11,6 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const { getInitials } = useInitials();
-
 </script>
 
 <template>

@@ -36,7 +36,7 @@ export default defineConfig({
                 'vue-router',
                 {
                     '@inertiajs/vue3': ['usePage', 'useForm', 'useRemember', 'usePoll', 'router', 'Deferred'],
-                    '@inertiajs/core': [],
+                    '@inertiajs/core': ['Method'],
                     'ziggy-js': ['Ziggy'],
                 },
             ],

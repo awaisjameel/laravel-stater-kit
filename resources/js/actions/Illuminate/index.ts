@@ -1,6 +1,6 @@
-import Routing from './Routing'
+import Routing from './Routing';
 const Illuminate = {
     Routing,
-}
+};
 
-export default Illuminate
+export default Illuminate;

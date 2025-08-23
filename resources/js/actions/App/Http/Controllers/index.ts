@@ -1,10 +1,10 @@
-import UserController from './UserController'
-import Settings from './Settings'
-import Auth from './Auth'
+import Auth from './Auth';
+import Settings from './Settings';
+import UserController from './UserController';
 const Controllers = {
     UserController,
-Settings,
-Auth,
-}
+    Settings,
+    Auth,
+};
 
-export default Controllers
+export default Controllers;

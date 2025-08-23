@@ -8,7 +8,7 @@ const props = defineProps<{
     open: boolean;
 }>();
 
-const rolesList = getEnumOptions(UserRole)
+const rolesList = getEnumOptions(UserRole);
 
 const form = useForm({
     name: '',
@@ -27,7 +27,6 @@ const form = useForm({
             </UiDialogHeader>
 
             <form @submit.prevent="form.submit(users.store(), { onSuccess: () => emit('created') })">
-
                 <div class="grid gap-4 py-4">
                     <div class="grid gap-2">
                         <UiLabel for="name">Name</UiLabel>
@@ -41,16 +40,16 @@ const form = useForm({
                         <InputError :message="form.errors.email" />
                     </div>
 
-                    <div class="grid gap-2 relative">
+                    <div class="relative grid gap-2">
                         <UiLabel for="role">Role</UiLabel>
-                        <UiSelect id="role" v-model="form.role" >
+                        <UiSelect id="role" v-model="form.role">
                             <UiSelectTrigger class="w-full">
                                 <UiSelectValue placeholder="Select a role" />
                             </UiSelectTrigger>
                             <UiSelectContent>
                                 <UiSelectGroup>
                                     <UiSelectLabel>Roles</UiSelectLabel>
-                                    <UiSelectItem v-for="(role, index) in rolesList" :key="index" :value="role.value">{{role.label}}</UiSelectItem>
+                                    <UiSelectItem v-for="(role, index) in rolesList" :key="index" :value="role.value">{{ role.label }}</UiSelectItem>
                                 </UiSelectGroup>
                             </UiSelectContent>
                         </UiSelect>
@@ -62,7 +61,6 @@ const form = useForm({
                         <UiInput id="password" type="password" v-model="form.password" placeholder="Enter password" />
                         <InputError :message="form.errors.password" />
                     </div>
-
                 </div>
                 <UiDialogFooter>
                     <UiButton type="button" variant="ghost" @click="$emit('update:open', false)">Cancel</UiButton>

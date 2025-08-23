@@ -1,6 +1,6 @@
-import Http from './Http'
+import Http from './Http';
 const App = {
     Http,
-}
+};
 
-export default App
+export default App;

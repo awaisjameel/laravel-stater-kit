@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type User } from '@/types';
 import users from '@/routes/users';
+import { type User } from '@/types';
 import { UserRole } from '@/types/app-data';
 
 const emit = defineEmits(['update:open', 'updated']);
@@ -10,7 +10,7 @@ const props = defineProps<{
     user: User;
 }>();
 
-const rolesList = getEnumOptions(UserRole)
+const rolesList = getEnumOptions(UserRole);
 
 const form = useForm({
     name: props.user?.name || '',
@@ -18,22 +18,18 @@ const form = useForm({
     role: props.user?.role || '',
     password: '',
 });
-
 </script>
 
 <template>
-     <UiDialog :open="open" @update:open="emit('update:open', $event)">
+    <UiDialog :open="open" @update:open="emit('update:open', $event)">
         <UiDialogContent class="sm:max-w-[425px]">
             <UiDialogHeader>
                 <UiDialogTitle>Edit User</UiDialogTitle>
-                <UiDialogDescription>
-                    Make changes to the user's information
-                </UiDialogDescription>
+                <UiDialogDescription> Make changes to the user's information </UiDialogDescription>
             </UiDialogHeader>
 
             <form @submit.prevent="form.submit(users.update({ user: props.user.id }), { onSuccess: () => emit('updated') })">
                 <div class="grid gap-4 py-4">
-
                     <div class="grid gap-2">
                         <UiLabel for="name">Name</UiLabel>
                         <UiInput id="name" v-model="form.name" placeholder="Enter name" />
@@ -46,16 +42,16 @@ const form = useForm({
                         <InputError :message="form.errors.email" />
                     </div>
 
-                    <div class="grid gap-2 relative">
+                    <div class="relative grid gap-2">
                         <UiLabel for="role">Role</UiLabel>
-                        <UiSelect id="role" v-model="form.role" >
+                        <UiSelect id="role" v-model="form.role">
                             <UiSelectTrigger class="w-full">
                                 <UiSelectValue placeholder="Select a role" />
                             </UiSelectTrigger>
                             <UiSelectContent>
                                 <UiSelectGroup>
                                     <UiSelectLabel>Roles</UiSelectLabel>
-                                    <UiSelectItem v-for="(role, index) in rolesList" :key="index" :value="role.value">{{role.label}}</UiSelectItem>
+                                    <UiSelectItem v-for="(role, index) in rolesList" :key="index" :value="role.value">{{ role.label }}</UiSelectItem>
                                 </UiSelectGroup>
                             </UiSelectContent>
                         </UiSelect>

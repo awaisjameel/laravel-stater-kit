@@ -15,8 +15,8 @@ const page = usePage();
             <UiSidebarMenuItem v-for="item in items" :key="item.title">
                 <UiSidebarMenuButton as-child :is-active="item.href === page.url" :tooltip="item.title">
                     <Link :href="item.href">
-                    <component :is="item.icon" />
-                    <span>{{ item.title }}</span>
+                        <component :is="item.icon" />
+                        <span>{{ item.title }}</span>
                     </Link>
                 </UiSidebarMenuButton>
             </UiSidebarMenuItem>

@@ -17,37 +17,55 @@ const submit = () => {
 
 <template>
     <AuthLayout title="Create an account" description="Enter your details below to create your account">
-
         <Head title="Register" />
 
         <form @submit.prevent="submit" class="flex flex-col gap-6">
             <div class="grid gap-6">
                 <div class="grid gap-2">
                     <UiLabel for="name">Name</UiLabel>
-                    <UiInput id="name" type="text" required autofocus :tabindex="1" autocomplete="name"
-                        v-model="form.name" placeholder="Full name" />
+                    <UiInput id="name" type="text" required autofocus :tabindex="1" autocomplete="name" v-model="form.name" placeholder="Full name" />
                     <InputError :message="form.errors.name" />
                 </div>
 
                 <div class="grid gap-2">
                     <UiLabel for="email">Email address</UiLabel>
-                    <UiInput id="email" type="email" required :tabindex="2" autocomplete="email" v-model="form.email"
-                        placeholder="email@example.com" />
+                    <UiInput
+                        id="email"
+                        type="email"
+                        required
+                        :tabindex="2"
+                        autocomplete="email"
+                        v-model="form.email"
+                        placeholder="email@example.com"
+                    />
                     <InputError :message="form.errors.email" />
                 </div>
 
                 <div class="grid gap-2">
                     <UiLabel for="password">Password</UiLabel>
-                    <UiInput id="password" type="password" required :tabindex="3" autocomplete="new-password"
-                        v-model="form.password" placeholder="Password" />
+                    <UiInput
+                        id="password"
+                        type="password"
+                        required
+                        :tabindex="3"
+                        autocomplete="new-password"
+                        v-model="form.password"
+                        placeholder="Password"
+                    />
                     <InputError :message="form.errors.password" />
                 </div>
 
                 <div class="grid gap-2">
                     <UiLabel for="password_confirmation">Confirm password</UiLabel>
-                    <UiInput id="password_confirmation" type="password" required :tabindex="4"
-                        autocomplete="new-password" v-model="form.password_confirmation"
-                        placeholder="Confirm password" />
+                    <UiInput
+                        id="password_confirmation"
+                        type="password"
+                        required
+                        :tabindex="4"
+                        autocomplete="new-password"
+                        v-model="form.password_confirmation"
+                        placeholder="Confirm password"
+                    />
                     <InputError :message="form.errors.password_confirmation" />
                 </div>
 
