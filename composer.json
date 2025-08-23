@@ -73,7 +73,8 @@
         ],
         "cleanup": [
             "@php vendor/bin/pint --parallel",
-            "@php vendor/bin/rector process"
+            "@php vendor/bin/rector process",
+            "npx prettier -w ./"
         ],
         "generate": [
             "@php artisan typescript:transform",
@@ -83,7 +84,8 @@
             "@php artisan typescript:transform",
             "@php artisan wayfinder:generate",
             "@php vendor/bin/pint --parallel",
-            "@php vendor/bin/rector process"
+            "@php vendor/bin/rector process",
+            "npx prettier -w ./"
         ]
     },
     "extra": {
