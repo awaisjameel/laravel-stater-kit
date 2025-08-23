@@ -4,7 +4,7 @@
     "type": "project",
     "description": "The skeleton application for the Laravel framework focused on security and type safety.",
     "keywords": [
-        "Laravel Stater kit",
+        "Laravel Starter kit",
         "Security and Type safety"
     ],
     "license": "MIT",

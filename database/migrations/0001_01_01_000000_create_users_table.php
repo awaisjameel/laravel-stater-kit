@@ -13,7 +13,7 @@ return new class extends Migration
 {
     public static function seedUsers(): void
     {
-        if (app()->environment('production')) {
+        if (! config('database.seed_users')) {
             return;
         }
 
@@ -51,7 +51,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('role')->default('');
+            $table->string('role')->default(UserRole::User->value);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

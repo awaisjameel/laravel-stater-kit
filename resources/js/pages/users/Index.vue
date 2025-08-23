@@ -154,7 +154,8 @@ const onUserDeleted = async () => {
                                 <UiPaginationItem :value="item" as-child>
                                     <UiButton class="h-10 w-10 p-0"
                                         :variant="item === currentPage ? 'outline' : 'ghost'"
-                                        @click="onPageChange(item)">
+                                        :aria-current="item === currentPage ? 'page' : undefined"
+                                        :disabled="item === currentPage" @click="onPageChange(item)">
                                         {{ item }}
                                     </UiButton>
                                 </UiPaginationItem>

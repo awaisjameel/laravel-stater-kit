@@ -1,6 +1,6 @@
-# Laravel Secure and Type Safe Stater-kit
+# Laravel Secure and Type Safe Starter-kit
 
-The skeleton application for the Laravel framework focused on security and type safety. Its the basic laravel/vue stater-kit with Intertial, shadcn-ui and tailwindcss. It is using rector and phpstan for code analysis and cleanup. For types laravel/wayfinder, spatie/laravel-data and spatie/laravel-typescript-transformer which insure single source of truth which automatically increases security and type safety. And configured Unimport for auto import of components and functions for better DX.
+The skeleton application for the Laravel framework focused on security and type safety. Its the basic laravel/vue starter-kit with Inertia, shadcn-ui and tailwindcss. It is using rector and phpstan for code analysis and cleanup. For types laravel/wayfinder, spatie/laravel-data and spatie/laravel-typescript-transformer which insure single source of truth which automatically increases security and type safety. And configured Unimport for auto import of components and functions for better DX.
 
 # Tech Stack
 
@@ -39,7 +39,7 @@ Laravel 12, Vue3, ShadcnVue, TailwindCSS, Inertiajs/Vue3, unplugin-auto-import, 
     - Do not manually import an file manually in `<script setup>` (`computed,ref,watch,onMounted,link, usePage, etc`) or any component defined in components dir, project is setup to automatically import most of the installed things.
     - Define Layouts for each type of page, or use existing if already exists any, see (/resources/js/layouts)
     - Use /resources/js/pages for route pages
-    - Use /resources/js/components for components used any ware in pages
+    - Use /resources/js/components for components used Anywhere in pages
     - Use js interface for frontend defined in resources/js/types/
     - Use ShadcnVue for basic common components like buttons, inputs, dropdowns, etc
     - Use Already https://icon-sets.iconify.design/ for icons search and use use it as `<Icon-mdi-home />` in component

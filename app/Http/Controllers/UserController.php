@@ -24,7 +24,7 @@ final class UserController extends Controller
                 page: $request->input('page', 1),
             )
             ->withQueryString()
-            ->through(fn (User $user): \App\Data\UserData => $user->toData());
+            ->through(fn (User $user): UserData => $user->toData());
 
         return Inertia::render('users/Index', [
             'users' => $users,
